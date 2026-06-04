@@ -35,11 +35,19 @@ docker volume create v-mariadbg1
 docker run -d --name Server-MariadbG1 -p 3343:3306 -e MARIADB_ROOT_PASSWORD=123456 -v v-mariadbg1:/var/lib/mysql e0236
 ````
 
-## Contenedor de mariaDB con volumen
+## Contenedor de Postgres con volumen
 ```` docker
 docker volume create v-postgresg1
 docker run -d --name Server-PosttgresG1 -p 5455:5432 -e POSTGRES_PASSWORD=123456 -v v-postgresg1:/var/lib/postgresql/data bbb885
 ````
+## Contenedor de SQL Server con Volumen 
+````docker
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=P@ssw0rd" \
+-p 1450:1433 --name sql1 --hostname sql1 \
+-d \ -v vsqlserverg1:/var/opt/mssql/data/
+mcr.microsoft.com/mssql/server:2022-latest
+
+
 ## comndos de docker
 | Comando | Descripción|
 | :--- | :--- |
@@ -67,3 +75,10 @@ USUARIOS CON MAYOR PRRIVILEGIOS
 MARIA DB  ROOT
 POSTGRES  POSTGRES
 SQ    SUPER ADMIN
+
+
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=P@ssw0rd" \
+   -u 0 \
+   -p 1450:1433 --name SQLServerG1 \
+   -d -v v-sqlserverg1:/var/opt/mssql/data \
+   db9a8
