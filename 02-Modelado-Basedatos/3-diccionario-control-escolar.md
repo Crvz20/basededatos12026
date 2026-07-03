@@ -115,3 +115,6 @@ Almacena la informacion de los estudiantes
 
 tipos de datos existentes de sql server, misql, mariadb posgres
 nomenclatura snake:todo en minustculas
+
+
+// Prueba
