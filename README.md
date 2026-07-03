@@ -116,9 +116,8 @@ ORDER BY i.fecha_registro DESC;
 
 ## 👤 Autor
 
-- **[Tu Nombre Aquí]**
-- [Tu Enlace a LinkedIn o Email]
+- Chris Angel Cruz Lopez
+- crisgamexd20@gmail.com
 
 ---
 
-⭐ *Si este repositorio te fue útil, considera dejar una estrella.*

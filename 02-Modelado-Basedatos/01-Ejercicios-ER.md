@@ -1,100 +1,102 @@
-# EJERCICIO MODELO E-R
+## EJERCICIOS MODELO E-R
 
-1. EJERCICIO 1
+1. En un hospital se registra informacion de sus pacientes 
 
-En un hospital se registra informacion de sus pacientes
+## De cada paciente se desea almacenar:
+  -Algo que lo identifique 
+  -Nombre 
+  -Fecha de Nacimiento 
 
-# De cada paciente se desea alamacenar :
-- Algo que lo identifique
--nombre
--fecha de nacimiento
+## De un expediente medico se almacena:
+  -Numero de Expediente 
+  -Fecha de Apertura
+  -Tipo de sangre 
 
-# de un expediente medico se almacena:
--el numero de expediente
--la fecha de apertura 
--tipo de sangre
-
-# Reglas del negocio:
--cada paciente debe de tener un expediente medico
--cada paciente pertenece unicamente a un expediente medico
--no puede existir ningun expediente medico sin paciente
--no puede exisitr un paciente sin un expediente
+## Reglas de Negocio 
 
 
-2. EJERCICIO 2
+## Resultado de Modelo E-R 
+![Hospital](Diagrama1.png)
 
-una universidad administra profesores y cursos,
->De cada profesor se almacena:
-    - Clava del profesor (ID)
-    - Nombre 
-    - Especialidad
+## Modelo Relacional 
+![Hospital](C:\UTTT\baseDeDatos\02-Modelado-Basedatos\Diagrama1.png)
 
->De cada curso se almacena:
-    - Identificacion del curso
-    - nombre del curso
-    - creditos
 
->Relgas del negocio
-    - unprofesor puede impartir varios cursos
-    - Un curso solamente puede ser impartido por un profesor
-    - puede existir un profesor que actual mente no imparta cursos
-    - todo curso debe ser asignado a un profesor
-    
-    Se debe realizar lo siguiente:
+2. Una universidad administra profeosres y cursos.
+ 
+> De cada profesor se almacena:
+   - Clave profesor 
+   - Nombre 
+   - Especialidad 
 
-    - entidades
-    - identificar la relacion 
-**IMPARTE**
-    - Determinar la Cardinalidad
-    - Determinar la participacion
-    
+> De cada curso se almacena:
+  - Identificacion del curso 
+  - Nombre del curso 
+  - Creditos 
 
-    3. EJERCICIO 3
+> Reglas del Negocio 
+  1. Un profesor puede impartir varios cursos 
+  2. Un curso solamente puede ser impartido por un profesor 
+  3. Puede existir un profesor que actualmente no imparta cursos 
+  4. Todo curso debe ser asignado a un profesor 
 
- Una escuela administra almunos y materias
-> de cada alumno se almacena:
-    - Matricula
-    - Nombre
-    - Semestre
+  Se debe realizar lo siguente :
+   - Entidades 
+   - Identificar la relacion 
+   **IMPARTE**
+   - Determinar la cardinalidad 
+   - Determinar la participacion 
+
+## Resultado de Modelo E-R 
+
+
+
+3. Una escuela administra alumnos y materias 
+> De cada alumno se almacena:
+  - Matricula 
+  - Nombre 
+  - Semestre 
+
 > De cada materia se almacena:
-    -clave
-    -Nombre
-    -Creditos
+  - Nombre de la materia 
+  - Creditos 
+  - Clave de la materia 
 
->reglas del negocio
-    - Un alumno puede inscribirse en varias materias
-    - Una materia puede tener muchos alumnos inscritos
-    - Puede exisitir una materia sin alumnos iscritos
-    - Todo alumno debe de estar incrito en almenos una Materia
-    - De cada inscripcion se debe almacenar, fecha de inscripcion y calificacion final
-    - la relacion se llamara 
-**INSCRIBE**
+ reglas 
+  1. Un alumno puede inscribirse en varias materias 
+  2. Una materia puede tener muchos alumnos inscritos 
+  3. Puede existir una materia sin alumnos inscritos 
+  4. Todo alumno debe estar inscrito en al menos una materia
+  5. De cada inscrpcion se debe almacenar:
+     - Fecha de inscrpcion 
+     - Calificacion final 
 
- 4. EJERCICIO 4 
- Una espera encargada de realizar venta de productos
- >de cada cliente se almacena:
-    -numero de cliente 
-    -nombre de cliente el cual es una persona moral
-    -RFC
+[Escuela](../../Downloads/EJERC3.drawio.pdf)
 
->la empresa realiza pedidos en los cuales almacena lo siguiente:
-    -Numero de pedido
-    -Fecha
 
->La empres tambien almacena productos de los cuales registra los siguientes:
-    -numero de producto
-    -nombre
-    -precio
-    
->al realizar los pedidos deben registrar la cantidad de producto pedido y su precio
+4. Una empresa encargada de realizar venta de productos:
+> De cada cliente se almacena:
+   - Numero de cliente que lo identifique
+   - Y su nombre de cliente el cual es una persona moral
+   - RFC 
+> La empresa realiza pedidos los cuales almacena lo siguiente:
+   - Numero de pedido
+   - Fecha 
+> La empresa tambien almacena productos de los cuales registra lo siguiente:
+   - Numero del producto 
+   - Nombre 
+   - Precio
+> Al realizar los pedidos deben registrar la cantidad de productos pedidos y precio 
+>Reglas 
+1. Un cliente puede realizar muchos pedidos 
+2. Cada pedido pertenece a un solo cliente
+3. Un pedido puede contener varios productos 
+4. Un producto puede aparecer en muchos pedidos 
+5. Un pedido debe contener al menos un producto
+6. Un producto puede no haber  sido vendido
+7. El detalle de pedido no existe sin pedido 
+8. El detalle de pedido no existe sin producto
+9. El detalle almacen cantidadd y precio de venta
 
->reglas del negocio:
-1. Un cliente puede realizar muchos pedidos
-2. cada pedido pertenece a un solo cliente
-3. Un pedido puede contener varios productos
-4. un producto puede aparecer en muchos pedidos
-5. un pedido debe de contener almenos un producto
-6. un producto pude no haber sido vendido
-7. el detalle el pedido no existe sin  pedido
-8. el detalle del pedido no existe sin producto
-9. el detalle almacena cantidad y precio de venta
+[Empresa](../../Downloads/EJERC4.drawio.pdf)
+      
