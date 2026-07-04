@@ -7,7 +7,7 @@
 | Proyecto | Empresa de Venta de Productos |
 | Versión | 1.0 |
 | Fecha | 03 Julio 2026 |
-| Elaboró | María Fernanda Hernandez Santillan |
+| Elaboró | Chris Angel Cruz Lopez |
 | SGBD | SQL Server |
 
 ---
@@ -154,4 +154,4 @@ Almacena los productos que contiene cada pedido.
 
 ## 9. Diagrama Relacional
 
-![Clientes](Tabla4.png)
+![Clientes](../img/MODELO-RELACIONAL/E4-MR.png)

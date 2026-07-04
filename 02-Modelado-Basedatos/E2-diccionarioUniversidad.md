@@ -7,7 +7,7 @@
 | Proyecto | Universidad |
 | Versión | 1.0 |
 | Fecha |03 Julio 2026 |
-| Elaboró | María Fernanda Hernandez Santillan  |
+| Elaboró | Chris Angel Cruz Lopez  |
 | SGBD | SQL Server |
 
 ---
@@ -111,4 +111,4 @@ Almacena la información de los cursos.
 
 ## 9. Diagrama Relacional
 
-![Profesor](Tabla2.drawio.png)
+![Profesor](../img/MODELO-RELACIONAL/E2-MR.png)
