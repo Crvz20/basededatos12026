@@ -16,10 +16,8 @@
 
 
 ## Resultado de Modelo E-R 
-![Hospital](Diagrama1.png)
+![Hospital](../img/E-R/E1-ER.png)
 
-## Modelo Relacional 
-![Hospital](C:\UTTT\baseDeDatos\02-Modelado-Basedatos\Diagrama1.png)
 
 
 2. Una universidad administra profeosres y cursos.
@@ -48,7 +46,7 @@
    - Determinar la participacion 
 
 ## Resultado de Modelo E-R 
-
+![Profesor](../img/E-R/E2-ER.png)
 
 
 3. Una escuela administra alumnos y materias 
@@ -71,7 +69,7 @@
      - Fecha de inscrpcion 
      - Calificacion final 
 
-[Escuela](../../Downloads/EJERC3.drawio.pdf)
+[Escuela](../img/E-R/E3-ER.png)
 
 
 4. Una empresa encargada de realizar venta de productos:
@@ -98,5 +96,16 @@
 8. El detalle de pedido no existe sin producto
 9. El detalle almacen cantidadd y precio de venta
 
-[Empresa](../../Downloads/EJERC4.drawio.pdf)
-      
+[Empresa](../img/E-R/ER4-ER.png)
+
+
+5. 
+Departamentos: La empresa está organizada en departamentos. Cada departamento tiene un nombre único, un número único y un empleado en particular que administra el departamento. Llevamos un registro de la fecha de inicio en la que ese empleado comenzó a administrar el departamento. Un departamento puede tener varias ubicaciones.
+
+Proyectos: Un departamento controla una serie de proyectos, cada uno de los cuales tiene un nombre único, un número único y una única ubicación.
+
+Empleados: Almacenamos el nombre de cada empleado, su número de Seguro Social, dirección, salario, sexo (género) y fecha de nacimiento. Un empleado es asignado a un departamento, pero puede trabajar en varios proyectos, los cuales no están necesariamente controlados por el mismo departamento. Llevamos un registro del número actual de horas a la semana que un empleado trabaja en cada proyecto. También llevamos un registro del supervisor directo de cada empleado (quien es otro empleado).
+
+Dependientes: Queremos llevar un registro de los dependientes de cada empleado para fines de seguro. Conservamos el primer nombre, sexo, fecha de nacimiento y la relación con el empleado de cada dependiente
+
+[Empresa2](../img/E-R/E5-ER.png)
