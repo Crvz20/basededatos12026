@@ -7,7 +7,7 @@
 | Proyecto | Escuela |
 | Versión | 1.0 |
 | Fecha | 03 de Julio 2026 |
-| Elaboró | María Fernanda Hernandez Santillan |
+| Elaboró | Chris Angel Cruz Lopez |
 | SGBD | SQL Server |
 
 ---
@@ -132,4 +132,4 @@ Almacena la relación entre alumnos y materias.
 
 ## 9. Diagrama Relacional
 
-![Escuela](TablaEscuela.jpeg)
+![Escuela](../img/MODELO-RELACIONAL/E3-MR.png)
