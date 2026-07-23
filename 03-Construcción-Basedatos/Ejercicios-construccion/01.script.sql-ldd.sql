@@ -1,135 +1,174 @@
--- Cosnstruccion de base de datos con SQL-LDD ( CREATE, ALTER, DROP)*/
+-- Crear la base de datos
 
---Crear una base de datos
-CREATE DATABASE empresa_patito;
+CREATE DATABASE empresa_yoda;
 GO
 
---UTILIZAR LA BASE DE DATOS 
-USE empresa_patito;
+-- Seleccionar la base de datos
+
+USE empresa_yoda;
 GO
 
---Crear una tabla
-CREATE TABLE alumno(
-	alumno_id INT,
-	nombre VARCHAR(30),
-	apellido_paterno VARCHAR(20),
-	apellido_materno VARCHAR(20),
-	fecha_nacimiento DATE,
-	correo VARCHAR(25)
-);
-GO
-
-INSERT INTO alumno
-VALUES (1, 'Domingo', 'Sarabia', 'Ramirez', '1942-03-24', 'domingo@domingo.com');
-VALUES (1, 'Patricio', 'Lopez', 'Nopales', '1952-04-26', 'pato@patito.com');
-
-SELECT*
-
-DROP TABLE alumno;
-
---Restricciones
-
-CREATE TABLE alumno(
-	alumno_id INT,
-	nombre VARCHAR(30),
-	apellido_paterno VARCHAR(20),
-	apellido_materno VARCHAR(20),
-	fecha_nacimiento DATE,
-	correo VARCHAR(25)
-	);
-	GO
-
-	DROP TABLE  alumno
-	GO
-
-	INSERT INTO alumno
-VALUES (1, 'Domingo', 'Sarabia', 'Ramirez', '1942-03-24', 'domingo@domingo.com');
-
-	INSERT INTO alumno
-VALUES (2, 'Patricio', 'Lopez', 'Nopales', '1952-04-26', 'pato@patito.com');
-
-
-CREATE TABLE alumno(
-	alumno_id INT NOT NULL,
-	CONSTRAINT pk_alumno,
-	PRIMARY KEY alumno_id,
-	nombre VARCHAR(30),
-	apellido_paterno VARCHAR(20),
-	apellido_materno VARCHAR(20),
-	fecha_nacimiento DATE,
-	correo VARCHAR(25)
-	);
-	GO
-		INSERT INTO alumno
-VALUES (1, 'Domingo', 'Sarabia', 'Ramirez', '1942-03-24', 'domingo@domingo.com');
-
-	INSERT INTO alumno
-VALUES (1, 'Patricio', 'Lopez', 'Nopales', '1952-04-26', 'pato@patito.com');
-GO
-
-DROP TABLE  alumno
-	GO
-
-
-	CREATE TABLE alumno(
-	alumno_id INT NOT NULL,
-	nombre VARCHAR(30),
-	apellido_paterno VARCHAR(20),
-	apellido_materno VARCHAR(20),
-	fecha_nacimiento DATE,
-	correo VARCHAR(25)
-	CONSTRAINT pk_alumno  -- ES UNA RESTRINGCION
-	PRIMARY KEY (alumno_id)
-	);
-	GO
-
-	INSERT INTO alumno
-VALUES (1, 'Domingo', 'Sarabia', 'Ramirez', '1942-03-24', 'domingo@domingo.com');
-
-	INSERT INTO alumno
-VALUES (2, 'Patricio', 'Lopez', 'Nopales', '1952-04-26', 'pato@patito.com');
-GO
-
---primary key con IDENTITY
+-- Tabla categoria
 
 CREATE TABLE categoria (
-    categoria_id INT IDENTITY(1,1) PRIMARY KEY, -- El IDENTITY siempre debe ser un entero
-    nombre VARCHAR(25) NOT NULL,
-    activo BIT NOT NULL
-);
-GO
 
-INSERT INTO categoria
-VALUES ('carnesfrias',1);
-
-INSERT INTO categoria
-VALUES ('carnesfrias',1);
-
-SELECT *
-FROM categoria
-
-DROP TABLE categoria
-
-CREATE TABLE categoria (
     categoria_id INT IDENTITY(1,1)
         CONSTRAINT pk_categoria
-        PRIMARY KEY (categoria_id),
-    nombre VARCHAR(25) NOT NULL UNIQUE,
-	CONSTRAINT uq_categoria_nombre 
-	UNIQUE
+        PRIMARY KEY,
+
+    nombre VARCHAR(20) NOT NULL
+        CONSTRAINT uq_categoria_nombre
+        UNIQUE,
+
     activo BIT NOT NULL
+        CONSTRAINT df_categoria_activo
+        DEFAULT 1
 );
 GO
 
-CREATE TABLE categoria (
-    categoria_id INT IDENTITY(1,1),
+-- Tabla producto
+
+CREATE TABLE producto (
+
+    producto_id INT NOT NULL,
+
+    fabricante_id CHAR(3) NOT NULL,
+
     nombre VARCHAR(25) NOT NULL,
-    activo BIT NOT NULL,
 
-    CONSTRAINT pk_categoria
-        PRIMARY KEY (categoria_id),
+    existencia INT NOT NULL,
 
-    CONSTRAINT uq_categoria_nombre
-        UNIQUE (nombre)
+    precio DECIMAL(10,2) NOT NULL,
+
+    activo BIT NOT NULL
+        CONSTRAINT df_producto_activo
+        DEFAULT 1,
+
+    categoria_id INT NOT NULL,
+
+    CONSTRAINT pk_producto
+        PRIMARY KEY (producto_id, fabricante_id),
+
+    CONSTRAINT uq_producto_nombre
+        UNIQUE (nombre),
+
+    CONSTRAINT ck_producto_existencia
+        CHECK (existencia > 0),
+
+    CONSTRAINT ck_producto_precio
+        CHECK (precio BETWEEN 1 AND 10000),
+
+    CONSTRAINT fk_producto_categoria
+        FOREIGN KEY (categoria_id)
+        REFERENCES categoria(categoria_id)
 );
 GO
+
+-- Insertar categorías
+
+INSERT INTO categoria (nombre)
+VALUES
+    ('Front End'),
+    ('Back End'),
+    ('Cloud');
+GO
+
+SELECT *
+FROM categoria;
+GO
+
+-- Insertar productos
+
+INSERT INTO producto
+VALUES
+    (1, 'FF1', 'Tailwind', 45, 987.34, DEFAULT, 1);
+
+INSERT INTO producto
+VALUES
+    (2, 'FF1', 'Bootstrap', 24, 567.80, 0, 1);
+
+INSERT INTO producto
+VALUES
+    (1, 'FF2', 'AWS', 12, 34.50, DEFAULT, 3);
+GO
+
+SELECT *
+FROM producto;
+GO
+
+-- Tabla proveedor
+
+CREATE TABLE proveedor (
+
+    proveedor_id INT NOT NULL
+        CONSTRAINT pk_proveedor
+        PRIMARY KEY,
+
+    empresa VARCHAR(30) NOT NULL,
+
+    direccion VARCHAR(60),
+
+    limite_credito DECIMAL(10,2) NOT NULL
+);
+GO
+
+-- Tabla contacto_proveedor
+
+CREATE TABLE contacto_proveedor (
+
+    contacto_id INT NOT NULL,
+
+    nombre VARCHAR(20) NOT NULL,
+
+    apellido_paterno VARCHAR(15) NOT NULL,
+
+    apellido_materno VARCHAR(15),
+
+    telefono VARCHAR(15) NOT NULL,
+
+    proveedor_id INT NOT NULL,
+
+    CONSTRAINT pk_contacto_proveedor
+        PRIMARY KEY (contacto_id),
+
+    CONSTRAINT fk_contacto_proveedor_proveedor
+        FOREIGN KEY (proveedor_id)
+        REFERENCES proveedor(proveedor_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+GO
+
+-- Insertar proveedores
+
+INSERT INTO proveedor
+VALUES
+    (1, 'Patito de Hule', NULL, 67888.01),
+    (2, 'Bimbo', NULL, 5678.01),
+    (3, 'Dulces Domingo', NULL, 6785.01),
+    (4, 'Drugs Kevin', NULL, 6789.01);
+GO
+
+-- Consultar proveedores
+
+SELECT *
+FROM proveedor;
+
+-- Consultar contactos
+
+SELECT *
+FROM contacto_proveedor;
+GO
+
+-- Eliminar proveedor
+
+DELETE FROM proveedor
+WHERE proveedor_id = 2;
+GO
+
+UPDATE proveedor
+SET proveedor_id = 10
+WHERE proveedor_id = 2;
+
+DROP TABLE contacto_proveedor;
+DROP TABLE producto;

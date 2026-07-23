@@ -98,6 +98,16 @@ sean mas legibles.
 - ck_producto_precio
 - df_cliente_activo
 
+## alter table 
+
+permite modificar una tabla existente ( o mas cosas)
+- Agregar columnas
+- Eeliminar columnas
+- Modificar Columnas
+- Agregar restricciones
+- Elimina restricciones
+
+Drop:solo elimina objetos
 
 
 
