@@ -162,4 +162,4 @@ SELECT
     dv.cantidad *dv.precio*(1.0 -descuento/100.0) AS importe_neto
 
 FROM detalle_ventas AS dv;
-GO
+GO  

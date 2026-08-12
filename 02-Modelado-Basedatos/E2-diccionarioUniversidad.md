@@ -7,7 +7,7 @@
 | Proyecto | Universidad |
 | Versión | 1.0 |
 | Fecha |03 Julio 2026 |
-| Elaboró | María Fernanda Hernandez Santillan  |
+| Elaboró | Chris Angel Cruz Lopez  |
 | SGBD | SQL Server |
 
 ---
